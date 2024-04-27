@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+<body>
+    <h1 style="text-align: center">Tervetuloa Messukkaan!!</h1>
+    <div sec:authentication="name"></div>
+    <div id="messages">
+        <ul>
+            <li th:each="message : ${messages}" style="text-align: center; list-style: none">
+             <span th:text="${message.sender}"></span>: <span th:text="${message.content}"></span>
+          </li>
+        </ul>
+    </div>
+    <form action="/send" method="post" style="text-align: center">
+        <input type="text" name="content" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
