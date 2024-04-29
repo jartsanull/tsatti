@@ -40,19 +40,20 @@ public class WebSecurityConfig {
 
 	    @Bean
 	    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
-	      http
-	      .authorizeHttpRequests( authorize -> authorize
-	        	.requestMatchers(antMatcher("/css/**")).permitAll() 
-	        	.anyRequest().authenticated()
-	        	
-	      )
-	      .formLogin(formlogin -> formlogin
-	          .defaultSuccessUrl("/chat", true)
-	          .permitAll()
-	      )
-	      .logout(logout -> logout
-	          .permitAll()
-	      );
+	       http
+	            .authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
+	                .authenticated()
+	            )
+	            .httpBasic(withDefaults())
+	            .formLogin(withDefaults())
+	            .csrf(AbstractHttpConfigurer::disable)
+	            .formLogin(formlogin -> formlogin
+	                .defaultSuccessUrl("/chat", true)
+	                .permitAll()
+	            )
+	            .logout(logout -> logout
+	                .permitAll()
+	            );
 	      return http.build();
 	    }
 
