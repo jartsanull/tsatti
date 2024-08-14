@@ -19,5 +19,25 @@
         <input type="text" name="content" placeholder="Type your message...">
         <button type="submit" class="btn btn-sm btn-primary">Send</button>
     </form>
+    
+    <script>
+    	var socket = new SockJS('/ws');
+    	var stompClient = Stomp.over(socket);
+    	
+    	stompClient.connect({}, function (frame){
+    		console.log('Connected: '+ frame);
+    		stompClient.subscribe('/topic/public', function (messageOutput){
+    			showMessage(JSON.parse(messageOutput.body));
+    		});
+    	});
+    		
+    		)
+    	}
+    			
+    	)
+    	
+    	
+    
+    </script>
 </body>
 </html>
