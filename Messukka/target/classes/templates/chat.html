@@ -39,11 +39,26 @@
     		}
     	}
     	
-    		
-    		)
-    	}
-    			
-    	)
+    	function showMessage(message) {
+            var messages = document.getElementById('messages');
+            var messageElement = document.createElement('li');
+
+            messageElement.classList.add('chat-message');
+            messageElement.style.textAlign = 'center';
+            messageElement.style.listStyle = 'none';
+
+            var senderElement = document.createElement('span');
+            senderElement.textContent = message.sender + ": ";
+            messageElement.appendChild(senderElement);
+
+            var contentElement = document.createElement('span');
+            contentElement.textContent = message.content;
+            messageElement.appendChild(contentElement);
+
+            messages.appendChild(messageElement);
+        }
+
+        document.getElementById('sendButton').addEventListener('click', sendMessage);
     	
     	
     
