@@ -30,6 +30,15 @@
     			showMessage(JSON.parse(messageOutput.body));
     		});
     	});
+    	
+    	function send(){
+    		var messageContent = document.geElementById('messageInput').value.trim();
+    		if(messageContent && stompClient){
+    			stompClient.send("/app/chat.sendMessage", {}, JSON.stringify({'content': messageContent}));
+                document.getElementById('messageInput').value = '';
+    		}
+    	}
+    	
     		
     		)
     	}
