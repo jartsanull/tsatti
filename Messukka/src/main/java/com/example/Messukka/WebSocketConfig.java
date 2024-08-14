@@ -16,7 +16,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 		config.enableSimpleBroker("/topic");
 		config.setApplicationDestinationPrefixes("/app");
 	
-	
 	}
 	
 	@Override
@@ -24,8 +23,5 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer{
 	
 		registry.addEndpoint("/ws").setAllowedOrigins("*").withSockJS();
 	}
-	
-
-
 	
 }
